@@ -1,0 +1,415 @@
+@import url('https://fonts.cdnfonts.com/css/netflix-sans');
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Global page styling */
+body {
+    margin: 0; /* Removes default browser spacing */
+    background-color: black; /* Sets the page background to black */
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; /* Uses a clean modern font stack */
+    overflow-x: hidden;
+}
+    
+
+ .img {
+    display: inline-flex; /* Keeps the image aligned inline with other content */
+    align-items: center; /* Centers the image vertically */
+    margin-left: 12px; /* Adds space to the left of the profile image */
+}
+
+.img img {
+    width: 36px; /* Sets the image width */
+    height: 36px; /* Sets the image height */
+    border-radius: 50%; /* Makes the image circular */
+    object-fit: cover; /* Crops the image to fit the box nicely */
+    border: 2px solid #fff; /* Adds a white border around the image */
+}
+
+.nav-left {
+    display: flex; /* Places items in a row */
+    align-items: center; /* Centers them vertically */
+    gap: 12px; /* Adds space between the logo and profile image */
+}
+
+/* Hero section with background image */
+.main {
+    background-image: url(https://assets.nflxext.com/ffe/siteui/vlv3/81b52f88-dc76-488d-a939-0cf13a260a6e/web/IN-en-20260622-TRIFECTA-perspective_d39d60ef-cb5a-4793-9546-0a8d9a87948e_large.jpg); /* Adds the hero background image */
+    background-size: cover; /* Makes the image cover the full section */
+    background-position: center center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    min-height: 80vh; /* Gives the hero section a large height */
+    position: relative; /* Allows overlay effects */
+}
+
+.main::before {
+    content: ""; /* Creates a pseudo-element for overlay */
+    position: absolute; /* Positions it over the hero section */
+    inset: 0; /* Covers the full area */
+    background: linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.65) 100%); /* Darkens the image for better text visibility */
+    z-index: 0; /* Places it behind content */
+}
+
+/* Optional dark overlay box */
+.main .box {
+    height: 80vh;
+    width: 100%;
+    opacity: 0.20;
+    background-color: rgb(7, 0, 0);
+    position: absolute;
+    top: 0;
+}
+
+/* Navigation bar layout */
+nav {
+    display: flex; /* Places nav items in a row */
+    justify-content: space-between; /* Pushes left and right content apart */
+    align-items: center; /* Centers items vertically */
+    width: 100%; /* Makes the nav span the full width */
+    padding: 20px 40px; /* Adds space inside the nav */
+    box-sizing: border-box; /* Includes padding in width calculation */
+    position: relative; /* Keeps it above overlays */
+    z-index: 2; /* Ensures it appears above the dark overlay */
+}
+
+/* Logo link styling */
+.logo-link {
+    display: inline-block; /* Makes the link behave like a box */
+}
+
+/* Logo image styling */
+.logo {
+    width: 120px; /* Sets the Netflix logo width */
+    height: auto; /* Keeps the aspect ratio */
+    display: block; /* Removes extra inline spacing */
+}
+
+/* Button group on the right side */
+.nav-actions {
+    display: flex; /* Places the buttons in a row */
+    gap: 12px; /* Adds space between the buttons */
+    align-items: center; /* Centers them vertically */
+}
+
+/* General button styling */
+button {
+    padding: 8px 16px; /* Adds padding inside buttons */
+    border: none; /* Removes default border */
+    border-radius: 4px; /* Rounds the corners */
+    cursor: pointer; /* Changes cursor to a pointer on hover */
+    color: white; /* Makes button text white */
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+button:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 10px 20px rgba(255,255,255,0.15);
+}
+
+/* English button styling */
+.lang-btn {
+    background: transparent; /* Makes the button transparent */
+    border: 1px solid white; /* Adds a white border */
+}
+
+/* Sign-in button styling */
+.signin-btn {
+    background: #e50914; /* Netflix-style red background */
+}
+/* Hero content styling */
+.hero {
+    min-height: calc(80vh - 90px); /* Sets the hero height */
+    display: flex; /* Uses flexbox for layout */
+    align-items: center; /* Centers content vertically */
+    justify-content: center; /* Centers content horizontally */
+    flex-direction: column; /* Stacks the hero content vertically */
+    color: white; /* Makes text white */
+    position: relative; /* Keeps it above the overlay */
+    z-index: 1; /* Places content above the overlay */
+    text-align: center; /* Centers text */
+    padding: 40px 20px 60px; /* Adds spacing around the hero content */
+    font-family: 'Netflix Sans', 'Helvetica Neue', Arial, sans-serif; /* Uses a Netflix-like font */
+}
+
+.hero-content {
+    max-width: 760px; /* Limits the hero text width */
+    display: flex; /* Stacks the content vertically */
+    flex-direction: column; /* Puts children in a column */
+    align-items: center; /* Centers the content horizontally */
+    gap: 16px; /* Adds space between text elements */
+    animation: faqFadeIn 0.8s ease both, heroFloat 3.5s ease-in-out infinite;
+}
+
+.hero h1 {
+    margin: 0; /* Removes default margin */
+    font-size: clamp(2rem, 4vw, 4rem); /* Makes the heading responsive */
+    font-weight: 700; /* Makes it bold */
+    line-height: 1.1; /* Tightens line spacing */
+    letter-spacing: 0.3px; /* Adds a bit of spacing between letters */
+}
+
+.hero-subtitle {
+    margin: 0; /* Removes default margin */
+    font-size: clamp(1rem, 2vw, 1.4rem); /* Makes the subtitle responsive */
+}
+
+.hero-description {
+    margin: 0; /* Removes default margin */
+    font-size: clamp(1rem, 2vw, 1.2rem); /* Makes the description responsive */
+    max-width: 650px; /* Limits the read width */
+}
+
+.hero-actions {
+    display: flex; /* Keeps the form controls in a row */
+    gap: 10px; /* Adds spacing between the input and button */
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    justify-content: center; /* Centers the items */
+    margin-top: 8px; /* Adds space above the row */
+}
+
+.hero input {
+    min-width: 280px; /* Gives the email input enough width */
+    padding: 15px 16px; /* Adds inner spacing */
+    border: 1px solid rgba(255,255,255,0.5); /* Adds a soft white border */
+    border-radius: 4px; /* Rounds the corners */
+    background: rgba(0, 0, 0, 0.7); /* Dark transparent input background */
+    color: white; /* Makes the text white */
+}
+
+.hero input::placeholder {
+    color: #bbb; /* Gives the placeholder a lighter gray color */
+}
+
+.get-started-btn {
+    padding: 15px 24px; /* Adds button spacing */
+    border: none; /* Removes default border */
+    border-radius: 4px; /* Rounds the button corners */
+    background: #e50914; /* Netflix red button */
+    color: white; /* Makes text white */
+    font-size: 1rem; /* Sets readable font size */
+    font-weight: 600; /* Makes the button text bold */
+    cursor: pointer; /* Shows a clickable cursor */
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.get-started-btn:hover {
+    transform: translateY(-4px) scale(1.05) rotate(-1deg);
+    box-shadow: 0 14px 30px rgba(229, 9, 20, 0.35);
+}
+.first {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    padding: 60px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+    color: white;
+    font-family: 'Netflix Sans', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.secImg {
+    position: relative; /* Allows the video and image to overlap */
+    width: min(480px, 100%); /* Makes the image responsive */
+    aspect-ratio: 16 / 9; /* Keeps a widescreen ratio */
+    display: flex; /* Centers the content inside */
+    align-items: center; /* Centers it vertically */
+    justify-content: center; /* Centers it horizontally */
+}
+
+.secImg img {
+    position: relative; /* Keeps the image above the video layer */
+    width: 100%; /* Makes it fill the container */
+    height: auto; /* Preserves the image proportions */
+    display: block; /* Removes inline spacing */
+    z-index: 2; /* Places it above the video */
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.secImg:hover img {
+    transform: perspective(1000px) rotateY(-8deg) rotateX(4deg) scale(1.03);
+    filter: drop-shadow(0 18px 30px rgba(255,255,255,0.2));
+}
+
+.secImg video {
+    position: absolute; /* Positions the video behind the image */
+    inset: 0; /* Covers the full container */
+    width: 100%; /* Fills the container width */
+    height: 100%; /* Fills the container height */
+    border-radius: 8px; /* Rounds the video corners */
+    object-fit: cover; /* Makes the video cover the area without distortion */
+    z-index: 1; /* Places it behind the image */
+}
+
+.first-content {
+    max-width: 540px; /* Limits the text width for better readability */
+}
+
+@media (max-width: 768px) {
+    .first {
+        flex-direction: column;
+        text-align: center;
+        gap: 24px;
+        padding: 40px 16px;
+    }
+
+    .first-content {
+        max-width: 100%;
+    }
+
+    .secImg {
+        width: min(360px, 100%);
+    }
+}
+
+.image-row {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 20px;
+    padding: 40px 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    justify-items: center;
+    perspective: 1200px;
+}
+
+.imgcard {
+    width: 100%; /* Makes each card fill its grid cell */
+    overflow: hidden; /* Hides any image overflow */
+    border-radius: 18px; /* Rounds the card corners */
+    background: #111; /* Gives the card a dark background */
+    box-shadow: 0 18px 45px rgba(0,0,0,0.25); /* Adds depth with a shadow */
+    transform-style: preserve-3d; /* Allows 3D hover effects */
+    transition: transform 0.35s ease, box-shadow 0.35s ease; /* Smooth hover transition */
+}
+
+.imgcard:hover {
+    transform: translateY(-12px) rotateY(10deg) rotateX(4deg) translateZ(18px); /* Lifts and tilts the card on hover */
+    box-shadow: 0 30px 70px rgba(255,255,255,0.18); /* Brightens the hover shadow */
+}
+
+.imgcard img {
+    width: 100%; /* Makes the image fill the card */
+    height: 230px; /* Sets a consistent image height */
+    object-fit: cover; /* Crops the image to fit */
+    display: block; /* Removes inline spacing */
+}
+
+.image-row {
+    animation: rowGlow 10s ease-in-out infinite alternate; /* Adds a soft animated glow effect */
+}
+
+@keyframes rowGlow {
+    0% {
+        filter: hue-rotate(0deg); /* Starts with no color shift */
+    }
+    100% {
+        filter: hue-rotate(20deg); /* Ends with a subtle color shift */
+    }
+}
+
+@media (max-width: 768px) {
+    .image-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* FAQ section styling */
+.faq-section {
+    max-width: 900px; /* Keeps the FAQ section centered and readable */
+    margin: 0 auto 60px; /* Centers the section and adds bottom space */
+    padding: 0 20px; /* Adds horizontal spacing */
+    color: white; /* Makes the text white */
+    font-family: 'Netflix Sans', 'Helvetica Neue', Arial, sans-serif; /* Uses a clean font */
+}
+
+.faq-section h2 {
+    text-align: center; /* Centers the FAQ heading */
+    font-size: clamp(1.6rem, 3vw, 2.4rem); /* Makes the heading responsive */
+    margin-bottom: 24px; /* Adds space below the heading */
+}
+
+.faq-list {
+    display: flex; /* Stacks the FAQ items vertically */
+    flex-direction: column; /* Places them one below the other */
+    gap: 12px; /* Adds spacing between items */
+}
+
+.faq-item {
+    background: #303030; /* Gives each FAQ item a dark gray background */
+    border-radius: 6px; /* Rounds the corners */
+    padding: 18px 20px; /* Adds padding inside the item */
+    cursor: pointer; /* Shows that it is clickable */
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.faq-item:hover {
+    transform: translateY(-3px) rotateX(2deg);
+    box-shadow: 0 10px 25px rgba(255,255,255,0.1);
+}
+
+.faq-item summary {
+    list-style: none; /* Removes the default bullet/marker */
+    font-size: 1.1rem; /* Sets the question text size */
+    font-weight: 600; /* Makes the text bold */
+    display: flex; /* Places the text and icon in a row */
+    justify-content: space-between; /* Pushes the question and icon apart */
+    align-items: center; /* Centers them vertically */
+}
+
+.faq-item summary::-webkit-details-marker {
+    display: none; /* Hides the default marker in Chrome/Safari */
+}
+
+.faq-item summary::after {
+    content: "+"; /* Adds a plus icon */
+    font-size: 1.4rem; /* Makes the icon slightly larger */
+    color: white; /* Makes the icon white */
+}
+
+.faq-item[open] summary::after {
+    content: "×"; /* Changes the icon to a cross when the FAQ is open */
+}
+
+.faq-item p {
+    margin: 14px 0 0; /* Adds space above the paragraph */
+    line-height: 1.6; /* Improves readability */
+    color: #ddd; /* Uses a lighter gray for the answer text */
+}
+
+.faq-item {
+    animation: faqFadeIn 0.6s ease both; /* Adds a fade-in effect to each FAQ item */
+}
+
+.faq-item:nth-child(2) { animation-delay: 0.1s; }
+.faq-item:nth-child(3) { animation-delay: 0.2s; }
+.faq-item:nth-child(4) { animation-delay: 0.3s; }
+.faq-item:nth-child(5) { animation-delay: 0.4s; }
+.faq-item:nth-child(6) { animation-delay: 0.5s; }
+
+.hero-content {
+    animation: faqFadeIn 0.8s ease both; /* Animates the hero content in smoothly */
+}
+
+@keyframes faqFadeIn {
+    from {
+        opacity: 0; /* Starts invisible */
+        transform: translateY(15px); /* Starts slightly lower */
+    }
+    to {
+        opacity: 1; /* Ends fully visible */
+        transform: translateY(0); /* Ends at the normal position */
+    }
+}
+
+@keyframes heroFloat {
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
